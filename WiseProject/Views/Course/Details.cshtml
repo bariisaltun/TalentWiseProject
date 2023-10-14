@@ -1,0 +1,79 @@
+﻿@model WiseProject.Models.Course
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EnrollmentCount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EnrollmentCount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Assignment</h4><a asp-controller="Course" asp-action="CreateAssignment" asp-route-id="@Model.Id">Create</a>
+    <hr />
+    <dl class="row">
+        @foreach (var m in Model.Assignment)
+        {
+            <div class="item">
+                @Html.DisplayFor(model => m.Title)
+             <br />
+                @Html.DisplayFor(model => m.Description)
+                <br />
+                @Html.DisplayFor(model => m.DueDate)
+            </div>
+            <td>
+            <dd class="col-sm-10">
+                <a asp-controller="Assignment" asp-action="Edit" asp-route-id="@m.Id">Edit</a>
+                <a asp-controller="Assignment" asp-action="Delete" asp-route-id="@m.Id">Delete</a>
+            </dd>
+                
+            </td>
+        }
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
